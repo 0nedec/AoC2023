@@ -21,3 +21,5 @@
 Adevent of Code 2023
 ====================
 
+My first attempt at Advent of Code using C++
+
