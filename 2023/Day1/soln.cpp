@@ -18,7 +18,7 @@ int getCoordinateFromLine(string currentString) {
 		}
 	}
 	if (last == 0) {
-	last = first;
+		last = first;
 	}
 	coordinate = ((first*10)+last);
 	return coordinate;
