@@ -63,8 +63,8 @@ int main (int argc, char *argv[]) {
 	}
 	
 	while(getline(inputfile, line)){
-		cout << line.c_str() << endl;
-		sum += getCoordinateFromLineWithStrings(line.c_str());
+	//	cout << line << endl;
+		sum += getCoordinateFromLineWithStrings(line);
 	}
 	cout << sum << endl;
 
