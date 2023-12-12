@@ -55,16 +55,14 @@ bool gameViable(vector<string>& rounds) {
 
 int parseLine (string line) {
 	vector<string> splitByColon, splitBySemicolon, splitBySpace;
-
-
 	int gameNumber = 0;
 	string temptString;
 	
 	splitByColon = splitString(line, ":");
 	splitBySpace = splitString(splitByColon[0], " ");
 	gameNumber = stoi(splitBySpace[1]);
-
 	splitBySemicolon = splitString(splitByColon[1], ";");
+	
 	if (gameViable(splitBySemicolon)){
 		cout << "Game " << gameNumber << " viable."<< endl;
 		return gameNumber;
