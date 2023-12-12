@@ -3,10 +3,15 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <map>
 
 using namespace std;
 
-
+void printVector(vector<string>& V) {
+	for (const auto& element : V) {
+	cout << element << endl;
+	}
+}
 
 vector<string> splitString(const string& str, const string& pattern) {
 	vector<string> tokens;
@@ -19,24 +24,54 @@ vector<string> splitString(const string& str, const string& pattern) {
 		found = str.find(pattern, start);
 	}
 	tokens.push_back(str.substr(start));
-	
-//	for ( const auto& token : tokens) {
-//		cout << token << endl;
-//	}
 	return tokens;
 	
 	
 }
 
+bool gameViable(vector<string>& rounds) {
+	int number = 0;
+	string num;
+	map<string, int> max;
+	max["red"] = 12;
+	max["green"] = 13;
+	max["blue"] = 14;
+
+	for (const auto& round : rounds) {
+		for (const auto& color : max) {
+			size_t position = round.find(color.first);
+			while (position != string::npos) {
+				num = round.substr((position-3), 3);
+				number = stoi(num);
+				if (number > color.second) {
+					return(false);
+				}
+				position = round.find(color.first, position + 1);
+			}
+		}
+	}
+	return(true);
+}
+
 int parseLine (string line) {
-	vector<string> result;
+	vector<string> splitByColon, splitBySemicolon, splitByComai, splitBySpace;
+
+
 	int gameNumber = 0;
+	string temptString;
 	
-	result = splitString(line, ":");
-	result = splitString(result[0], " ");
-	gameNumber = stoi(result[1]);
-	cout << gameNumber << endl;
-	return 0;
+	splitByColon = splitString(line, ":");
+	splitBySpace = splitString(splitByColon[0], " ");
+	gameNumber = stoi(splitBySpace[1]);
+
+	splitBySemicolon = splitString(splitByColon[1], ";");
+	if (gameViable(splitBySemicolon)){
+		cout << "Game " << gameNumber << " viable."<< endl;
+		return gameNumber;
+	}
+	else {
+		return 0;
+	}
 }
 
 
@@ -57,8 +92,6 @@ int main (int argc, char *argv[] ) {
 		cout << "Failed to open input file." << endl;
 	}
 	while(getline(inputfile, line)) {
-		//do the thing
-		//cout << line << endl;
 		sum += parseLine(line);
 	}
 	
@@ -67,6 +100,3 @@ int main (int argc, char *argv[] ) {
 	inputfile.close();
 	return 0;
 }
-	
-
-
