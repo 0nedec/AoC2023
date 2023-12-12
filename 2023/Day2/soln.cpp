@@ -54,7 +54,7 @@ bool gameViable(vector<string>& rounds) {
 }
 
 int parseLine (string line) {
-	vector<string> splitByColon, splitBySemicolon, splitByComai, splitBySpace;
+	vector<string> splitByColon, splitBySemicolon, splitBySpace;
 
 
 	int gameNumber = 0;
