@@ -1,3 +1,3 @@
 default:
-	g++ -std=c++20 soln.cpp -o soln
-	./soln input.txt
+	g++ -std=c++20 soln-2.cpp -o soln-2
+	./soln-2 input.txt
