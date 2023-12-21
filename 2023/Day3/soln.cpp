@@ -95,7 +95,7 @@ int main (int argc, char *argv[] ) {
 				numberStr += lines[i][j];
 			}
 			else if (!numberStr.empty()){
-				cout << numberStr << endl;
+			//	cout << numberStr << endl;
 
 				numbersWithPositions.push_back(NumberWithPosition(numberStr, i, j-numberStr.length()));
 				numberStr = "";
