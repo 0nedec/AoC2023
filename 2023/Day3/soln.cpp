@@ -9,7 +9,7 @@ using namespace std;
 
 void printVector(vector<string>& V) {
     for (const auto& element : V) {
-    cout << element << endl;
+    	cout << element << endl;
     }
 }
 
@@ -131,7 +131,6 @@ int main (int argc, char *argv[] ) {
 		}
 	}
 	for (NumberWithPosition np : numbersWithPositions) {
-	//	cout << np.getNumber() << endl;
 		sum += np.getNumber();
 	}
 	cout << sum << endl;
